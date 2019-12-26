@@ -5,6 +5,7 @@ require 'rake'
 require './models'
 
 set :database, {adapter: "sqlite3", database: "umbrella.sqlite3"}
+enable :sessions
 
 get '/' do
     erb :home
@@ -17,6 +18,15 @@ end
 post '/login' do
     user = User.find_by(email: params[:email])
     given_password = params[:password]
+    if user.password == given_password
+        session[:user_id] = user.id
+        session[:user_name] = [user.first_name, user.last_name].join(' ')
+        puts "You've been signed in"
+        redirect './profile'
+    else
+    puts "Incorrect credentials. Please check your e-mail and password."
+        redirect './login'
+    end
 end
     
 get '/signup' do
@@ -34,4 +44,13 @@ post '/signup' do
         redirect './signup'
     end
     p params
+end
+
+get '/logout' do
+    session[:user_id] = nil
+    redirect '/'
+end
+
+get '/profile' do
+    erb :profile
 end
