@@ -12,9 +12,14 @@
     <nav>
         <div id='navbar'>
             <a href='/'>Home</a>
-            <a href='/signup'>Signup</a>
-            <a href='/login'>Login</a>
-            <a href='/logout'>Logout</a>
+            <% if session[:user_id] == nil %>
+                <a href='/signup'>Signup</a>
+                <a href='/login'>Login</a>
+            <% end %>
+            <% if session[:user_id] %>
+                <a href='/profile'><%= session[:user_name] %></a>
+                <a href='/logout'>Logout</a>
+            <% end %>
         </div>
     </nav>
 

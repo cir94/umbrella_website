@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_193500) do
     t.string "email"
     t.string "password"
     t.string "sector"
+    t.string "deactivated", default: "0"
   end
 
 end

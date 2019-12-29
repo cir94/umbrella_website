@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :password
       t.string :sector
+      t.string :deactivated, default: 0
   end
 end
 end
