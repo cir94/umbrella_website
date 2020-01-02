@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
 end
 
 class Post < ActiveRecord::Base
-    validates :post, length: {minimum: 1}
+    validates :content, length: {minimum: 1}
 end

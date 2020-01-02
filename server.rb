@@ -20,8 +20,6 @@ post '/login' do
     given_password = params[:password]
     if user.password == given_password
         session[:user_id] = user.id
-        session[:user_firstname] = user.first_name
-        session[:user_lastname] = user.last_name
         session[:user_fullname] = [user.first_name, user.last_name].join(' ')
         session[:user_email] = user.email
         session[:user_deactivate] = user.deactivated
@@ -64,8 +62,17 @@ get '/profile' do
     elsif session[:user_deactivate] == '1'
         redirect '/deactivated'
     else
+        @posts = Post.where(user_id: session[:user_id])
+        puts @posts
         erb :profile
     end
+end
+
+get '/profile/:id' do
+    @searchedID = params[:id]
+    @user = User.find_by(id: params[:id])
+    puts user.email
+    erb :profile
 end
 
 get '/createpost' do
@@ -82,8 +89,7 @@ end
 post '/createpost' do
     @post = Post.new(params[:post])
     if @post.valid?
-        @post.first_name = session[:user_firstname]
-        @post.last_name = session[:user_lastname]
+        @post.user_id = session[:user_id]
         @post.email = session[:user_email]
         @post.time = Time.now
         @post.save
@@ -91,6 +97,12 @@ post '/createpost' do
     else
         redirect '/'
     end
+end
+
+get '/posts' do
+    @posts = Post.all
+    puts @posts
+    erb :posts
 end
 
 # Pages for deactivation/reactivation
