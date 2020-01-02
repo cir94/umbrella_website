@@ -20,7 +20,10 @@ post '/login' do
     given_password = params[:password]
     if user.password == given_password
         session[:user_id] = user.id
-        session[:user_name] = [user.first_name, user.last_name].join(' ')
+        session[:user_firstname] = user.first_name
+        session[:user_lastname] = user.last_name
+        session[:user_fullname] = [user.first_name, user.last_name].join(' ')
+        session[:user_email] = user.email
         session[:user_deactivate] = user.deactivated
         puts "You've been signed in"
         redirect './profile'
@@ -41,7 +44,7 @@ post '/signup' do
     @user = User.new(params[:user])
     if @user.valid?
         @user.save
-        redirect '/'
+        redirect '/login'
     else
         @user.errors.messages
         redirect './signup'
@@ -65,6 +68,35 @@ get '/profile' do
     end
 end
 
+get '/createpost' do
+    if session[:user_id] == nil
+        redirect '/login'
+    elsif session[:user_deactivate] == '1'
+        redirect '/deactivated'
+    else
+    @post = Post.new(params[:post])
+    erb :createpost
+    end
+end
+
+post '/createpost' do
+    @post = Post.new(params[:post])
+    if @post.valid?
+        @post.first_name = session[:user_firstname]
+        @post.last_name = session[:user_lastname]
+        @post.email = session[:user_email]
+        @post.time = Time.now
+        @post.save
+        redirect '/profile'
+    else
+        redirect '/'
+    end
+end
+
+# Pages for deactivation/reactivation
+
+# Deactivates the users account by changing flag to '1' in deactivated table in database
+
 get '/deactivation' do
     if session[:user_id] == nil
         redirect '/login'
@@ -84,6 +116,8 @@ get '/deactivate' do
     erb :deactivate
 end
 
+# Page deactivated accounts are redirectged to
+
 get '/deactivated' do
     puts session[:user_deactivate]
    if session[:user_id] == nil
@@ -94,6 +128,8 @@ get '/deactivated' do
         erb :deactivated
    end
 end
+
+# A page that serves as a reactivator, sets the flag on the deactivated table in the database to '0'
 
 get '/reactivate' do
     user = User.find_by(id: session[:user_id])
