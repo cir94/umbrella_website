@@ -4,6 +4,7 @@ class UserPosts < ActiveRecord::Migration[6.0]
       t.string :user_id
       t.string :email
       t.string :time
+      t.string :title
       t.string :content
   end
 end

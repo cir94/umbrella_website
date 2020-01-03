@@ -4,11 +4,17 @@
 <button onclick="window.location.href = './deactivation';">Deactivation</button>
 <button onclick="window.location.href = './createpost';">Create Database Entry</button>
 
+<h2>Posts</h2>
+
 <div id="profilePosts">
 
     <% @posts.each do |post| %>
 
-    <%= post.content %>
+    <%= post.title %>
+
+   <div id="profilepostContent"> 
+        <h1><%= post.content %></h1>
+    </div>
 
     <% end %>
 

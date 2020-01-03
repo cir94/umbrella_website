@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_193500) do
     t.string "user_id"
     t.string "email"
     t.string "time"
+    t.string "title"
     t.string "content"
   end
 
