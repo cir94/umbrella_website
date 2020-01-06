@@ -1,10 +1,11 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require 'sqlite3'
 require 'rake'
 require './models'
+# require './environments'
 
-set :database, {adapter: "sqlite3", database: "umbrella.sqlite3"}
+set :database, {adapter: "postgresql", database: "umbrella"}
+# set :database, {adapter: "sqlite3", database: "umbrella.sqlite3"}
 enable :sessions
 
 get '/' do
