@@ -71,7 +71,8 @@ end
 get '/profile/:id' do
     @searchedID = params[:id]
     @user = User.find_by(id: params[:id])
-    puts user.email
+    @posts = Post.where(user_id: params[:id])
+    puts @user.email
     erb :profile
 end
 

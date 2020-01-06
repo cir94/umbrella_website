@@ -18,6 +18,26 @@ body {
     color: white;
 }
 
+#logo {
+    display: grid;
+    position: relative;
+    justify-content: center;
+    padding: 5%;
+}
+
+#loginPrompt {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 5%;   
+    padding-left: 10%;
+}
+
+#signUp {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 5%;
+}
+
 #profilePosts {
     display: grid;
     grid-template-rows: repeat(1, auto);
@@ -31,6 +51,7 @@ body {
     border-radius: 20px;
     border-style: solid;
     background-color: #ffffff;
+    width: 50%;
 }
 
 #profilepostContent h1 {
