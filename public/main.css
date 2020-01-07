@@ -34,8 +34,8 @@ body {
 
 #signUp {
     display: grid;
-    grid-template-columns: repeat(5, auto);
     grid-gap: 5%;
+    justify-content: center;
 }
 
 #profilePosts {
