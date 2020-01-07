@@ -42,16 +42,16 @@ body {
     display: grid;
     grid-template-rows: repeat(1, auto);
     grid-gap: 20%;
+    justify-content: center;
 }
 
 #profilepostContent {
     color: #333333;
     font-size: 9px;
     border: #ffffff;
-    border-radius: 20px;
+    border-radius: 5px;
     border-style: solid;
     background-color: #ffffff;
-    width: 50%;
 }
 
 #profilepostContent h1 {
