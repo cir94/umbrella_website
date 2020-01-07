@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'rake'
+require 'pg'
 require './models'
 # require './environments'
 
