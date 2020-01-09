@@ -44,12 +44,12 @@ post '/login' do
 end
     
 get '/signup' do
-    # @user = User.new(params[:user])
+    @user = User.new(params[:user])
     erb :signup
 end
 
 post '/signup' do
-    # @user = User.new(params[:user])
+    @user = User.new(params[:user])
     if @user.valid?
         @user.save
         redirect '/login'
