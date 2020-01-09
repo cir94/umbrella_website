@@ -45,15 +45,23 @@ body {
     justify-content: center;
 }
 
-#profilepostContent {
+#postTitle {
     color: #333333;
-    font-size: 9px;
     border: #ffffff;
     border-radius: 5px;
     border-style: solid;
     background-color: #ffffff;
 }
 
-#profilepostContent h1 {
-    display:inline
+#postContent {
+    border: #ffffff;
+    border-radius: 5px;
+    border-style: solid;
+    background-color: #ffffff;
+}
+
+#postContent h1 {
+    display: inline;
+    color: #333333;
+    font-size: 20px;
 }

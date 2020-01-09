@@ -5,8 +5,16 @@ require 'pg'
 require './models'
 # require './environments'
 
-set :database, {adapter: "postgresql", database: "umbrella"}
-# set :database, {adapter: "sqlite3", database: "umbrella.sqlite3"}
+configure :development do
+    set :database, {adapter: "postgresql", database: "umbrella"}
+end
+
+configure :production do
+    set :database, {url: ENV['DATABASE_URL']}
+end
+
+# set :database, {adapter: "postgresql", database: "umbrella"}
+
 enable :sessions
 
 get '/' do

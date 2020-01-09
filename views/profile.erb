@@ -10,10 +10,20 @@
 
     <% @posts.each do |post| %>
 
-    <%= post.title %>
-
    <div id="profilepostContent"> 
+
+        <div id="postTitle">
+        
+        <%= post.title %>
+
+        </div>
+        
+        <div id="postContent">
+
         <h1><%= post.content %></h1>
+        
+        </div>
+    
     </div>
 
     <% end %>
