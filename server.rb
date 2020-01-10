@@ -102,7 +102,7 @@ post '/createpost' do
     if @post.valid?
         @post.user_id = session[:user_id]
         @post.email = session[:user_email]
-        @post.time = Time.now
+        @post.time = Time.now.strftime("%m/%d/%Y %H:%M")
         @post.save
         redirect '/profile'
     else

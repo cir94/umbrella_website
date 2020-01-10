@@ -1,3 +1,10 @@
+<style>
+body {background-color: #000000;}
+body {background-image: url(img/profile.png);}
+body {background-size: contain;}
+body {background-repeat: no-repeat;}
+</style>
+
 <h1>Welcome, <%= session[:user_fullname] %> </h1>
 
 
@@ -14,7 +21,9 @@
 
         <div id="postTitle">
         
-        <%= post.title %>
+        <h2><%= post.title %></h2>
+
+        <p>Logged by <%= session[:user_fullname] %> on <%= post.time %> </p>
 
         </div>
         
