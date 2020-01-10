@@ -1,0 +1,29 @@
+<h2>Posts</h2>
+
+<div id="profilePosts">
+
+    <% @posts.each do |post| %>
+
+   <div id="profilepostContent"> 
+
+        <div id="postTitle">
+        
+        <h2><%= post.title %></h2>
+        
+        <%= user = User.find_by(id: post.user_id)%>
+
+        <p>Logged by <%= user.first_name %> <%= user.last_name %> on <%= post.time %> </p>
+
+        </div>
+        
+        <div id="postContent">
+
+        <h1><%= post.content %></h1>
+        
+        </div>
+    
+    </div>
+
+    <% end %>
+
+</div>
