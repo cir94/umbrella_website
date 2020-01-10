@@ -3,6 +3,8 @@ body {background-color: #000000;}
 body {background-image: url(img/profile.png);}
 body {background-size: contain;}
 body {background-repeat: no-repeat;}
+
+h2 {padding: 2%;}
 </style>
 
 <h1>Welcome, <%= session[:user_fullname] %> </h1>
@@ -15,6 +17,7 @@ body {background-repeat: no-repeat;}
 
 <div id="profilePosts">
 
+    
     <% @posts.each do |post| %>
 
    <div id="profilepostContent"> 
