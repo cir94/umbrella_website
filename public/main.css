@@ -53,7 +53,11 @@ body {
     border-radius: 5px;
     border-style: solid;
     background-color: #8585853a;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
+}
+
+#postTitle p {
+    padding: 2%;
 }
 
 #postContent {
@@ -70,4 +74,28 @@ body {
     display: inline;
     color: #c7c7c7;
     font-size: 20px;
+}
+
+#createPost {
+    padding: 5%;
+}
+
+textarea#title {
+    color: #ffffff;
+    border: #8585853a;
+    border-radius: 5px;
+    border-style: solid;
+    background-color: #8585853a;
+    padding-left: 4%;
+    margin-top: -0.9%;
+}
+
+textarea#content {
+    color: #ffffff;
+    border: #8585853a;
+    border-radius: 5px;
+    border-style: solid;
+    background-color: #8585853a;
+    padding-left: 4%;
+    margin-top: -0.9%;
 }

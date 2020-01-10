@@ -6,8 +6,14 @@ body {background-repeat: no-repeat;}
 
 </style>
 
+<div id="createPost">
+
+<h2>Writing a new database entry as: <%= session[:user_fullname] %></h2>
+
 <form action='/createpost' method="POST">
     <textarea cols="30" rows="2" id="title" placeholder="Title" name="post[title]"></textarea>
     <textarea cols="50" rows="5" id="content" placeholder="Database Entry" name="post[content]"></textarea>
     <input type="submit" value="Submit Entry">
 </form>
+
+</div>
