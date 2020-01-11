@@ -67,7 +67,8 @@ body {
     background-color: #8585853a;
     padding-left: 4%;
     margin-top: -0.9%;
-
+    padding-top: 4%;
+    padding-bottom: 4%;
 }
 
 #postContent h1 {
