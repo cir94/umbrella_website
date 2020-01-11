@@ -137,8 +137,6 @@ end
 get '/deactivate' do
     if session[:user_id] == nil
         redirect '/login'
-    elsif session[:user_deactivate] == '0'
-        redirect '/profile'
     else
     user = User.find_by(id: session[:user_id])
     user.deactivated = "1"
@@ -167,8 +165,6 @@ end
 get '/reactivate' do
     if session[:user_id] == nil
         redirect '/login'
-    elsif session[:user_deactivate] == '0'
-        redirect '/profile'
     else
     user = User.find_by(id: session[:user_id])
     user.deactivated = "0"
