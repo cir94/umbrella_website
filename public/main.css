@@ -77,6 +77,8 @@ body {
 }
 
 #createPost {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
     padding: 5%;
 }
 
@@ -86,7 +88,7 @@ textarea#title {
     border-radius: 5px;
     border-style: solid;
     background-color: #8585853a;
-    padding-left: 4%;
+    padding-left: 2%;
     margin-top: -0.9%;
 }
 
@@ -96,6 +98,6 @@ textarea#content {
     border-radius: 5px;
     border-style: solid;
     background-color: #8585853a;
-    padding-left: 4%;
-    margin-top: -0.9%;
+    padding-left: 2%;
+    margin-top: 1.1%;
 }

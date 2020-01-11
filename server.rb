@@ -3,7 +3,6 @@ require 'sinatra/activerecord'
 require 'rake'
 require 'pg'
 require './models'
-# require './environments'
 
 configure :development do
     set :database, {adapter: "postgresql", database: "umbrella"}
@@ -13,7 +12,6 @@ configure :production do
     set :database, {url: ENV['DATABASE_URL']}
 end
 
-# set :database, {adapter: "postgresql", database: "umbrella"}
 
 enable :sessions
 
@@ -111,9 +109,15 @@ post '/createpost' do
 end
 
 get '/posts' do
+    if session[:user_id] == nil
+        redirect '/login'
+    elsif session[:user_deactivate] == '1'
+        redirect '/deactivated'
+    else
     @posts = Post.all
     puts @posts
     erb :posts
+    end
 end
 
 # Pages for deactivation/reactivation
@@ -131,12 +135,18 @@ get '/deactivation' do
 end
 
 get '/deactivate' do
+    if session[:user_id] == nil
+        redirect '/login'
+    elsif session[:user_deactivate] == '0'
+        redirect '/profile'
+    else
     user = User.find_by(id: session[:user_id])
     user.deactivated = "1"
     user.save
     session[:user_id] = nil
     session[:user_name] = nil
     erb :deactivate
+    end
 end
 
 # Page deactivated accounts are redirectged to
@@ -155,10 +165,16 @@ end
 # A page that serves as a reactivator, sets the flag on the deactivated table in the database to '0'
 
 get '/reactivate' do
+    if session[:user_id] == nil
+        redirect '/login'
+    elsif session[:user_deactivate] == '0'
+        redirect '/profile'
+    else
     user = User.find_by(id: session[:user_id])
     user.deactivated = "0"
     user.save
     session[:user_id] = nil
     session[:user_name] = nil
     erb :reactivate
+    end
 end

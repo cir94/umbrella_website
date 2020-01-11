@@ -2,7 +2,6 @@
 
 body {background-image: url(img/profile2.png);}
 body {background-size: cover;}
-body {background-repeat: no-repeat;}
 
 </style>
 
@@ -11,9 +10,17 @@ body {background-repeat: no-repeat;}
 <h2>Writing a new database entry as: <%= session[:user_fullname] %></h2>
 
 <form action='/createpost' method="POST">
+
+    <div id="title">
     <textarea cols="30" rows="2" id="title" placeholder="Title" name="post[title]"></textarea>
+    </div>
+    
+    <div id="content">
     <textarea cols="50" rows="5" id="content" placeholder="Database Entry" name="post[content]"></textarea>
+    </div>
+
     <input type="submit" value="Submit Entry">
+    
 </form>
 
 </div>
